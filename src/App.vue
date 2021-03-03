@@ -1,32 +1,51 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
-</template>
-
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+::-webkit-scrollbar-thumb {
+  background-color: #8e24aa;
+  border-radius: 5px;
+  z-index: -1;
+}
+.nethernite {
+  background: url("assets/nethernite.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.br {
+  border: 1px solid red;
+}
+.full-width {
+  width: 100%;
 }
 </style>
+
+<template lang="pug">
+v-app
+  v-app-bar(app elevation="0" dense height="50px" color="primary" dark).flex-row
+    base-header
+  v-main
+    router-view
+  v-footer(app color="primary" height="50px" dark).br
+    base-footer
+</template>
+
+<script>
+import baseHeader from '@/components/base_header.vue'
+import baseFooter from '@/components/base_footer.vue'
+
+export default {
+  name: 'App',
+  components: {
+    baseHeader,
+    baseFooter,
+  }
+}
+</script>
